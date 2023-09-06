@@ -246,7 +246,6 @@ console.log("Dopo l'operazione ci sono " + characters.length + ' personaggi')
 const validIndex = Math.floor(Math.random() * 10)
 const randomCharacter = starWarsCharacters[validIndex]
 
-console.log(starWarsCharacters[i])
 console.log(
   'My name is ' +
     randomCharacter.name +
