@@ -203,7 +203,7 @@ if (crewMass >= 1000) {
   console.log('Warning: Load is over 700')
 } else if (crewMass >= 500) {
   console.log('Ship is half loaded')
-} else if (crewMass < 500) {
+} else {
   console.log('Ship is under loaded')
 }
 
@@ -223,12 +223,19 @@ console.log(starWarsCharacters)
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "characters" le stringhe corrispondenti a personaggi con lo stesso nome.
   Una volta fatto crea un console.log per controllare la proprietà length di "characters" prima e dopo l'operazione.
 */
+
 console.log(
   "Prima dell'operazione ci sono " + characters.length + ' personaggi'
 )
 
-characters.splice(4, 1)
-characters.splice(5, 1)
+for (let i = 0; i < femaleCharacters.length; i++) {
+  for (let j = 0; j < characters.length; j++) {
+    if (femaleCharacters[i].name === characters[j]) {
+      // dobbiamo rimuovere il nome corrispondente da characters
+      characters.splice(j, 1)
+    }
+  }
+}
 
 console.log("Dopo l'operazione ci sono " + characters.length + ' personaggi')
 
@@ -236,31 +243,26 @@ console.log("Dopo l'operazione ci sono " + characters.length + ' personaggi')
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
 
-const random = (min = 0, max = 1) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
-;(items = starWarsCharacters.length),
-  (total = items - 1),
-  (i = random(0, total))
+const validIndex = Math.floor(Math.random() * 10)
+const randomCharacter = starWarsCharacters[validIndex]
 
 console.log(starWarsCharacters[i])
 console.log(
   'My name is ' +
-    starWarsCharacters[i].name +
+    randomCharacter.name +
     ". I'm a " +
-    starWarsCharacters[i].gender +
+    randomCharacter.gender +
     '. I was born in ' +
-    starWarsCharacters[i].birth_year +
+    randomCharacter.birth_year +
     '. My height is ' +
-    starWarsCharacters[i].height +
+    randomCharacter.height +
     ' and my weight is ' +
-    starWarsCharacters[i].mass +
+    randomCharacter.mass +
     '. My skin is ' +
-    starWarsCharacters[i].skin_color +
+    randomCharacter.skin_color +
     ', my hair are ' +
-    starWarsCharacters[i].hair_color +
+    randomCharacter.hair_color +
     ' and my eyes are ' +
-    starWarsCharacters[i].eye_color +
+    randomCharacter.eye_color +
     '.'
 )
